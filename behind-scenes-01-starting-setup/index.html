@@ -18,13 +18,13 @@
     </header>
     <section id="app">
       <h2>How Vue Works</h2>
-      <input type="text" @input="saveInput">
+      <input type="text" ref="userText">
       <button @click="setText">Set Text</button>
       <p>{{ message }}</p>
     </section>
     <section id="app2">
       <!-- 다른 앱의 프로퍼티라 작동 안함 : <p>{{ message }}</p> -->
-      <p>{{ favoriteMeal }}</p>
+
     </section>
   </body>
 </html>

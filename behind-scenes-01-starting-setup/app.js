@@ -10,7 +10,9 @@ const app = Vue.createApp({
       this.currentUserInput = event.target.value;
     },
     setText() {
-      this.message = this.currentUserInput;
+      // this.message = this.currentUserInput;
+      this.message = this.$refs.userText; // 해당 input 요소의 Dom 객체를 가리키게 됨
+      // console.dir(this.$refs.userText)
     },
   },
 });
@@ -18,6 +20,9 @@ const app = Vue.createApp({
 app.mount("#app");
 
 const app2 = Vue.createApp({
+  template: `
+  <p>{{ favoriteMeal }}</p>
+  `,
   data() {
     return {
       favoriteMeal: "Pizza",
