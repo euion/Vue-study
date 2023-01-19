@@ -31,9 +31,14 @@ export default {
     };
   },
   methods: {
-    submitData(){
-      this.$emit('add-contact', this.enteredName,this.enteredPhone,this.enteredEmail)
-    }
+    submitData() {
+      this.$emit(
+        "add-contact",
+        this.enteredName,
+        this.enteredPhone,
+        this.enteredEmail
+      );
+    },
   },
 };
 </script>
