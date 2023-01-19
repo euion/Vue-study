@@ -1,16 +1,17 @@
 <template>
   <section>
     <header><h1>My Fiends</h1></header>
+    <form><new-friend></new-friend></form>
     <ul>
       <friend-contact
-        name="Manuel Lorenz"
-        phone-number="0123 4567 8910"
-        email-address="manuel@localhost.com"
-      ></friend-contact>
-      <friend-contact
-        name="Maria smith"
-        phone-number="1098 7654 3210"
-        email-address="maria@localhost.com"
+        v-for="friend in friends"
+        :key="friend.id"
+        :id="friend.id"
+        :name="friend.name"
+        :phone-number="friend.phone"
+        :email-address="friend.email"
+        :is-favorite="friend.isFavorite"
+        @toggle-favorite="toggleFavoriteStatus"
       ></friend-contact>
     </ul>
   </section>
@@ -18,8 +19,9 @@
 
 <script>
 import FriendContact from "./components/FriendContact.vue";
+import NewFriend from "./components/NewFriend.vue";
 export default {
-  components: { FriendContact },
+  components: { FriendContact, NewFriend },
   data() {
     return {
       friends: [
@@ -28,15 +30,25 @@ export default {
           name: "Manuel Lorenz",
           phone: "0123 4567 8910",
           email: "manuel@localhost.com",
+          isFavorite: true,
         },
         {
           id: "maria",
           name: "maria smith",
           phone: "1098 7654 3210",
           email: "maria@localhost.com",
+          isFavorite: false,
         },
       ],
     };
+  },
+  methods: {
+    toggleFavoriteStatus(friendId) {
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId
+      );
+      identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+    },
   },
 };
 </script>
@@ -72,7 +84,8 @@ header {
   list-style: none;
 }
 
-#app li {
+#app li,
+#app form {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 1rem auto;
   border-radius: 10px;
