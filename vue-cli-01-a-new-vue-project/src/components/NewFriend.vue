@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form>
+    <form @submit.prevent="submitData">
       <div>
         <label>Name</label>
         <input type="text" v-model="enteredName" />
@@ -29,6 +29,11 @@ export default {
       enteredPhone: "",
       enteredEmail: "",
     };
+  },
+  methods: {
+    submitData(){
+      this.$emit('add-contact', this.enteredName,this.enteredPhone,this.enteredEmail)
+    }
   },
 };
 </script>
