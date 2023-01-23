@@ -3,18 +3,23 @@
     <the-header></the-header>
     <!-- <BadgeList />
     <UserInfo /> -->
-<active-goals></active-goals>
-<manage-goals></manage-goals>
-    <badge-list></badge-list>
+    <button @click="setSelectedComponent('active-goals')">Active Goals</button>
+    <button @click="setSelectedComponent('manage-goals')">Manage Goals</button>
+    <!-- <active-goals v-if="selectedComponent === 'active-goals'"></active-goals>
+    <manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals> -->
+    <keep-alive>
+      <component :is="selectedComponent"></component>
+    </keep-alive>
+    <!-- <badge-list></badge-list>
     <user-info
       :full-name="activeUser.name"
       :info-text="activeUser.description"
       :role="activeUser.role"
     ></user-info>
-    <course-goals  #default="slotProps">
+    <course-goals #default="slotProps">
       <h2>{{ slotProps.item }}</h2>
-        <p>{{ slotProps['another-prop'] }}</p>
-    </course-goals>
+      <p>{{ slotProps["another-prop"] }}</p>
+    </course-goals> -->
   </div>
 </template>
 
@@ -33,16 +38,22 @@ export default {
     UserInfo,
     CourseGoals,
     ActiveGoals,
-    ManageGoals
+    ManageGoals,
   },
   data() {
     return {
+      selectedComponent: "active-goals" /** 초기값 */,
       activeUser: {
         name: "Maximilian Schwarzmüller",
         description: "Site owner and admin",
         role: "admin",
       },
     };
+  },
+  methods: {
+    setSelectedComponent(cmp) {
+      this.selectedComponent = cmp;
+    },
   },
 };
 </script>

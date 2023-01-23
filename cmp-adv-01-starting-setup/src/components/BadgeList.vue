@@ -7,9 +7,7 @@
             <base-badge type="admin" caption="ADMIN"></base-badge>
           </li>
           <li>
-            <base-badge type="author" caption="AUTHOR"> 
-          
-          </base-badge>
+            <base-badge type="author" caption="AUTHOR"> </base-badge>
           </li>
         </ul>
       </template>
