@@ -1,16 +1,15 @@
 <template>
   <section>
     <base-card>
-      <template v-slot:header>
-        <h2>Available Badges</h2>
-      </template>
-      <template v-slot:default>
+      <template #default>
         <ul>
           <li>
             <base-badge type="admin" caption="ADMIN"></base-badge>
           </li>
           <li>
-            <base-badge type="author" caption="AUTHOR"></base-badge>
+            <base-badge type="author" caption="AUTHOR"> 
+          
+          </base-badge>
           </li>
         </ul>
       </template>
