@@ -4,12 +4,14 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import TeamsList from './components/teams/TeamsList.vue';
 import UsersList from './components/users/UsersList.vue';
+import TeamMembers from './components/teams/TeamMembers.vue';
 
 const router = createRouter({
   history: createWebHistory(), //라우팅 관련 페이지가 브라우징 히스토리에 등록되도록 하는 방식 설정
   routes: [
     { path: '/teams', component: TeamsList }, // URL에서 도메인의 뒷부분에 해당하며 라우터가 어떤 컴포넌트를 로드해야 하는지 알려주는 역할 수행
     { path: '/users', component: UsersList },
+    { path: '/teams/:teamId', component: TeamMembers },
   ],
   linkActiveClass: 'active',
 });
