@@ -3,6 +3,10 @@
   <main>
     <router-view></router-view>
   </main>
+  <footer>
+    <router-view name="footer"></router-view>
+    <!--slot처럼 라우터에 footer라는 이름 부여 -->
+  </footer>
 </template>
 
 <script>
