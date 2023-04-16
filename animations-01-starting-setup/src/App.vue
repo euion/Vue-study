@@ -1,7 +1,11 @@
 <template>
   <div class="container">
-    <div class="block"></div>
+    <div class="block" :class="{ animate: animatedBlock }"></div>
     <button @click="animateBlock">Animate</button>
+  </div>
+  <div class="container">
+    <p v-if="paraIsVisible">this is only sometimes visible...</p>
+    <button>Toggle Paragraph</button>
   </div>
   <base-modal @close="hideDialog" v-if="dialogIsVisible">
     <p>This is a test dialog!</p>
@@ -10,15 +14,24 @@
   <div class="container">
     <button @click="showDialog">Show Dialog</button>
   </div>
-</template>  
+</template>
 
 <script>
 export default {
   data() {
-    return { dialogIsVisible: false };
+    return {
+      animatedBlock: false,
+      dialogIsVisible: false,
+      paraIsVisible: false,
+    };
   },
   methods: {
-    animateBlock(){},
+    animateBlock() {
+      this.animateBlock = true;
+    },
+    toggleParagraph() {
+      this.paraIsVisible = !this.paraIsVisible;
+    },
     showDialog() {
       this.dialogIsVisible = true;
     },
@@ -69,5 +82,23 @@ button:active {
   padding: 2rem;
   border: 2px solid #ccc;
   border-radius: 12px;
+}
+.animate {
+  /* transform: translateX(-50px); */
+  animation: slide-fade 0.3s ease-out forwards;
+}
+
+@keyframes slide-fade {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+
+  70% {
+    transform: translate(-120px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-150px) scale(1);
+  }
 }
 </style>
