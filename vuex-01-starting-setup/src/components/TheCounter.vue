@@ -10,7 +10,7 @@ export default {
     // counter() {
     //   return this.$store.getters.finalCounter;
     // },
-    ...mapGetters(['finalCounter']), // mapGetter는 배열을 인수로 받는다.
+    ...mapGetters('numbers', ['finalCounter']), // mapGetter는 배열을 인수로 받는다.
   },
 };
 </script>
